@@ -1,0 +1,62 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@nuxt/content": "3.4.0",
+    "@nuxt/eslint": "1.3.0",
+    "@nuxt/fonts": "^0.11.4",
+    "@nuxt/image": "1.10.0",
+    "@nuxt/ui": "^3.2.0",
+    "@nuxthub/core": "0.8.22",
+    "@nuxtjs/color-mode": "3.5.2",
+    "@nuxtjs/supabase": "1.5.0",
+    "@supabase/supabase-js": "^2.50.3",
+    "@tailwindcss/vite": "^4.1.11",
+    "@tresjs/cientos": "^4.3.1",
+    "@tresjs/core": "^4.3.6",
+    "@tresjs/nuxt": "^3.0.8",
+    "@tresjs/post-processing": "^2.4.0",
+    "@types/three": "^0.175.0",
+    "dayjs": "^1.11.13",
+    "eslint": "^9.30.1",
+    "global": "^4.4.0",
+    "nuxt": "^3.17.6",
+    "pnpm": "^10.12.4",
+    "tailwindcss": "^4.1.11",
+    "three": "^0.175.0",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1"
+  },
+  "packageManager": "pnpm@10.11.1+sha512.e519b9f7639869dc8d5c3c5dfef73b3f091094b0a006d7317353c72b124e80e1afd429732e28705ad6bfa1ee879c1fce46c128ccebd3192101f43dd67c667912",
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.54",
+    "@vueuse/core": "^13.5.0",
+    "@vueuse/nuxt": "^13.5.0",
+    "supabase": "^2.30.4",
+    "typescript": "^5.8.3",
+    "vue-tsc": "^2.2.10",
+    "wrangler": "^4.22.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "better-sqlite3",
+      "esbuild",
+      "supabase",
+      "unrs-resolver",
+      "vue-demi",
+      "workerd"
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+@import "tailwindcss" theme(static);
+@import "@nuxt/ui";
+
+:root {
+  --ui-primary: var(--color-latte-primary);
+  --ui-secondary: var(--color-latte-secondary);
+}
+
+@theme {
+  --color-latte-primary: hsl(316deg, 73%, 69%);
+  --color-latte-secondary: hsl(266deg, 85%, 58%);
+  --color-latte-green: hsl(109deg, 58%, 40%);
+  --color-latte-peach: hsl(22deg, 99%, 52%);
+  --color-latte-yellow: hsl(35deg, 77%, 49%);
+  --color-latte-sky-blue: hsl(197deg, 97%, 46%);
+  --color-latte-blue: hsl(220deg, 91%, 54%);
+  --color-latte-lavender: hsl(231deg, 97%, 72%);
+
+  --color-mocha-base: hsl(240deg, 21%, 15%);
+  --color-mocha-mantle: hsl(240deg, 21%, 12%);
+  --color-mocha-crust: hsl(240deg, 23%, 9%);
+  --color-mocha-text: hsl(226deg, 64%, 88%);
+  --color-mocha-primary: hsl(316deg, 72%, 86%);
+  --color-mocha-overlay: hsl(230deg, 13%, 55%);
+
+  --drop-shadow-latte-pink-300: 0px 0px 39px rgba(234, 118, 203, 0.3);
+  --drop-shadow-latte-pink-400: 0px 0px 39px rgba(234, 118, 203, 0.4);
+  --drop-shadow-latte-pink-500: 0px 0px 39px rgba(234, 118, 203, 0.5);
+  --drop-shadow-latte-pink-900: 0px 0px 39px rgba(234, 118, 203, 0.9);
+  --drop-shadow-latte-pink-1000: 0px 0px 39px rgba(234, 118, 203, 1);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  background-color: var(--color-mocha-crust);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-latte-primary);
+}
+
+p {
+  color: var(--color-mocha-text);
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+div {
+  font-family: "Roboto", sans-serif;
+}
+
+img {
+  object-fit: cover;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* main {
+  position: absolute;
+} */
