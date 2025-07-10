@@ -1,7 +1,5 @@
-<script setup></script>
-
 <template>
-  <div class="w-full bg-mocha-crust">
+  <main class="w-full bg-mocha-crust pointer-none">
     <slot />
-  </div>
+  </main>
 </template>

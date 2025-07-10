@@ -35,17 +35,9 @@ async function signInWithOtp() {
 </script>
 
 <template>
-  <TresCanvas window-size alpha>
-    <TresPerspectiveCamera :position="[0, 0, 20]" />
-    <TresAmbientLight />
-    <TresDirectionalLight :position="[0, 5, 0]" />
-    <Suspense>
-      <NyaNyaOrangeWhite />
-    </Suspense>
-    <OrbitControls />
-  </TresCanvas>
+  <NyaNyaOrangeWhite />
   <form
-    class="flex flex-col justify-center items-center w-screen h-screen gap-5"
+    class="flex flex-col justify-center items-center w-screen h-screen gap-5 z-50"
     @submit.prevent="signInWithOtp"
   >
     <UFormField label="Account">
