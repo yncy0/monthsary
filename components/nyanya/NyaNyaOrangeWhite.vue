@@ -1,8 +1,9 @@
 <script setup>
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
-let scene, camera, renderer;
+let scene, camera, renderer, controls;
 let model, mixer, clock;
 
 const loader = new GLTFLoader();
@@ -36,6 +37,9 @@ function init() {
   renderer.setPixelRatio(window.devicePixelRation);
   renderer.setSize(window.innerWidth, window.innerHeight);
 
+  controls = new OrbitControls(camera, canvas);
+  controls.update();
+
   loadModel();
 }
 
@@ -48,9 +52,9 @@ function loadModel() {
     const animations = gltf.animations;
     mixer = new THREE.AnimationMixer(model);
     const action = mixer.clipAction(animations[0]);
-    action.play()
+    action.play();
 
-    renderer.setAnimationLoop(animate)
+    renderer.setAnimationLoop(animate);
   });
 }
 
@@ -58,7 +62,7 @@ function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
 
-  renderer.setSize(window.innerWidth / window.innerHeight);
+  renderer.setSize(window.innerWidth , window.innerHeight);
 }
 
 function animate() {

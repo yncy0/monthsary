@@ -77,7 +77,7 @@ canvas {
   left: 0;
   position: fixed;
   width: 100%;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 /* main {
