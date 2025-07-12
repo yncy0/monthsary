@@ -47,7 +47,7 @@ function loadModel() {
   loader.load("nyanya/wave.glb", function (gltf) {
     model = gltf.scene;
     scene.add(model);
-    model.position.set(0, 4, 0);
+    model.position.set(0, 4.5, 0);
 
     const animations = gltf.animations;
     mixer = new THREE.AnimationMixer(model);

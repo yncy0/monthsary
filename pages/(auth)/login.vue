@@ -36,13 +36,16 @@ async function signInWithOtp() {
 </script>
 
 <template>
-  <div class="border-gradient rounded-lg">
+  <NyaNyaOrangeWhite/>
+  <div class="border-gradient rounded-lg w-full lg:w-[720px]">
     <form
-      class="flex flex-col justify-center items-center gap-5 p-20 z-50 bg-mocha-base rounded-md text-center"
+      class="flex flex-col justify-center items-center gap-10 lg:gap-5 px-12 py-20 lg:p-20 z-50 bg-mocha-base rounded-md text-center"
       @submit.prevent="signInWithOtp"
     >
-      <h1 class="text-2xl font-bold">Hello There!</h1>
-      <p>Welcome back my pookie!</p>
+      <div class="flex flex-col gap-2">
+        <h1 class="text-2xl font-bold">Hello There!</h1>
+        <p>Welcome back my pookie!</p>
+      </div>
       <UFormField label="Email Account" class="w-full">
         <UInput
           v-model="email"
@@ -52,27 +55,32 @@ async function signInWithOtp() {
           :ui="{ base: 'bg-mocha-mantle p-3' }"
         />
       </UFormField>
-      <UButton
-        type="submit"
-        variant="subtle"
-        label="Login"
-        class="w-full p-4 flex flex-col items-center"
-      />
-      <UButton
-        label="Back"
-        variant="ghost"
-        to="/"
-        class="w-full p-4 flex flex-col items-center"
-      />
+      <div class="flex flex-col gap-5 w-full">
+        <UButton
+          type="submit"
+          variant="subtle"
+          label="Login"
+          class="w-full lg:p-4 flex flex-col items-center"
+        />
+        <UButton
+          label="Back"
+          variant="ghost"
+          to="/"
+          class="w-full lg:p-4 flex flex-col items-center"
+        />
+      </div>
     </form>
   </div>
 </template>
 
 <style scoped>
 .border-gradient {
-  width: 720px;
   position: relative;
   padding: 3px;
-  background: linear-gradient(to right, var(--color-latte-primary), var(--color-latte-secondary));
+  background: linear-gradient(
+    to right,
+    var(--color-latte-primary),
+    var(--color-latte-secondary)
+  );
 }
 </style>
