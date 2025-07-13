@@ -1,16 +1,79 @@
-<script setup lang="ts">
-import { useAnimations, useGLTF } from "@tresjs/cientos";
+<script setup>
+import * as THREE from "three";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
-const { scene: model, animations } = await useGLTF("/nyanya/wave.glb");
-model.position.set(0, 4, 0)
+let scene, camera, renderer, controls;
+let model, mixer, clock;
 
-const { actions } = useAnimations(animations, model);
+const loader = new GLTFLoader();
 
-const currentAction = ref(actions.Wave);
+onMounted(() => {
+  init();
 
-currentAction.value.play()
+  window.addEventListener("resize", onWindowResize);
+});
+
+function init() {
+  scene = new THREE.Scene();
+
+  clock = new THREE.Clock();
+
+  camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    100,
+  );
+  camera.position.set(0, 0, 12);
+
+  const light = new THREE.AmbientLight(0xffffff, 2);
+  const dirLight = new THREE.DirectionalLight(0xffffff, 2);
+
+  scene.add(camera, light, dirLight);
+
+  const canvas = document.querySelector("#bg");
+  renderer = new THREE.WebGLRenderer({ alpha: true, canvas: canvas });
+  renderer.setPixelRatio(window.devicePixelRation);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  controls = new OrbitControls(camera, canvas);
+  controls.update();
+
+  loadModel();
+}
+
+function loadModel() {
+  loader.load("nyanya/wave.glb", function (gltf) {
+    model = gltf.scene;
+    scene.add(model);
+    model.position.set(0, 4.5, 0);
+
+    const animations = gltf.animations;
+    mixer = new THREE.AnimationMixer(model);
+    const action = mixer.clipAction(animations[0]);
+    action.play();
+
+    renderer.setAnimationLoop(animate);
+  });
+}
+
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize(window.innerWidth , window.innerHeight);
+}
+
+function animate() {
+  const mixerUpdateDelta = clock.getDelta();
+
+  mixer.update(mixerUpdateDelta);
+
+  renderer.render(scene, camera);
+}
 </script>
 
 <template>
-  <primitive :object="model" />
+  <canvas id="bg" />
 </template>

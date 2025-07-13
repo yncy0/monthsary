@@ -9,7 +9,7 @@ const props = defineProps<{
 <template>
   <UCard
     variant="solid"
-    class="w-full lg:w-[1200px] bg-mocha-base flex flex-col items-center text-center"
+    class="max-w-screen w-full lg:w-[1000px] bg-mocha-base flex flex-col items-center text-center"
   >
     <NuxtImg
       v-if="props.imgUrl"

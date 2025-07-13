@@ -7,6 +7,7 @@ const user = useSupabaseUser();
     <UButton
       v-if="user"
       label="Let's Get Started"
+      variant="subtle"
       size="sm"
       trailing-icon="i-lucide-arrow-right"
       class="px-4 py-2 shadow-2xl"
