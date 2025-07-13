@@ -9,13 +9,13 @@ const props = defineProps<{
 </script>
 
 <template>
-  <UCard class="m-1 lg:h-[560px] bg-mocha-base">
+  <UCard class="m-1 lg:h-[560px] bg-mocha-base py-5 lg:py-0">
     <template #header>
       <div class="flex flex-col gap-4">
         <NuxtImg
           v-slot="{src, isLoaded, imgAttrs}"
           :src="props.imgSrc"
-          class="rounded-lg lg:w-[320px] lg:h-[320px] object-cover"
+          class="rounded-lg h-[320px] lg:size-[320px] object-cover"
           :custom="true"
         >
           <img v-if="isLoaded" v-bind="imgAttrs" :src=src>

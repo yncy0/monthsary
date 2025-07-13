@@ -21,7 +21,7 @@ onMounted(async () => {
   >
     <HeadingGlow :level="2" text="Roadmap" class="text-4xl lg:text-7xl" />
     <p class="text-sm lg:text-lg">Lists of accomplished goals</p>
-    <div
+    <section
       v-for="(item, index) in items"
       :key="index"
       class="px-6 pt-10 lg:px-20 lg:pt-20 mb-10 w-full flex flex-col"
@@ -40,7 +40,7 @@ onMounted(async () => {
         :header="item.header"
         :body="item.body"
       />
-    </div>
+    </section>
     <UButton
       label="See More..."
       trailing-icon="i-lucide-arrow-right"
