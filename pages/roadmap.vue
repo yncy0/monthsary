@@ -5,7 +5,6 @@ definePageMeta({
   colorMode: "dark"
 })
 
-// const user = useSupabaseUser();
 const items = ref([]);
 
 let scene, camera, light,  renderer

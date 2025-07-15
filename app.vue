@@ -1,4 +1,10 @@
-<script setup></script>
+<script setup lang="ts">
+const { setUserAuth } = useAuthState()
+
+await callOnce(async () => {
+  await setUserAuth()
+})
+</script>
 
 <template>
   <ColorScheme>

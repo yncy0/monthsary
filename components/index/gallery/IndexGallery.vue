@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const user = useSupabaseUser();
+const { userAuth } = useAuthState();
 
 const items = ref([]);
 const isUser = ref(false);
@@ -7,7 +7,7 @@ const isUser = ref(false);
 onMounted(async () => {
   const results = await useFetchMemories();
 
-  if (!user.value) {
+  if (!userAuth.value) {
     items.value = getMockGallery();
     isUser.value = false;
   } else {
@@ -18,22 +18,14 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section
-    id="gallery"
-    class="flex flex-col w-full h-dvh items-center gap-10 pb-20 pt-10"
-  >
-    <HeadingGlow
-      :level="2"
-      text="Memories..."
-      class="text-4xl lg:text-7xl"
-    />
+  <section id="gallery" class="flex flex-col w-full h-dvh items-center gap-10 pb-20 pt-10">
+    <HeadingGlow :level="2" text="Memories..." class="text-4xl lg:text-7xl" />
     <div class="px-4">
       <p class="text-sm lg:text-lg">
         Here lies our precious memories that we did together, from the beginning
         until now.
         <span>
-          <NuxtLink class="text-latte-primary" href="/gallery"
-            >See more...
+          <NuxtLink class="text-latte-primary" href="/gallery">See more...
           </NuxtLink>
         </span>
       </p>
