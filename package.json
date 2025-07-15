@@ -21,7 +21,7 @@
     "@nuxthub/core": "0.8.22",
     "@nuxtjs/color-mode": "3.5.2",
     "@nuxtjs/supabase": "1.5.0",
-    "@supabase/supabase-js": "^2.50.4",
+    "@supabase/supabase-js": "^2.50.5",
     "@tailwindcss/vite": "^4.1.11",
     "@tresjs/cientos": "^4.3.1",
     "@tresjs/core": "^4.3.6",
@@ -29,16 +29,17 @@
     "@tresjs/post-processing": "^2.4.0",
     "@types/three": "^0.175.0",
     "dayjs": "^1.11.13",
-    "eslint": "^9.30.1",
+    "eslint": "^9.31.0",
     "global": "^4.4.0",
     "nuxt": "^3.17.6",
+    "pinia": "^3.0.3",
     "pnpm": "^10.13.1",
     "tailwindcss": "^4.1.11",
     "three": "^0.175.0",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"
   },
-  "packageManager": "pnpm@10.11.1+sha512.e519b9f7639869dc8d5c3c5dfef73b3f091094b0a006d7317353c72b124e80e1afd429732e28705ad6bfa1ee879c1fce46c128ccebd3192101f43dd67c667912",
+  "packageManager": "pnpm@10.13.1+sha512.37ebf1a5c7a30d5fabe0c5df44ee8da4c965ca0c5af3dbab28c3a1681b70a256218d05c81c9c0dcf767ef6b8551eb5b960042b9ed4300c59242336377e01cfad",
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.57",
     "@vueuse/core": "^13.5.0",
@@ -46,7 +47,7 @@
     "supabase": "^2.30.4",
     "typescript": "^5.8.3",
     "vue-tsc": "^2.2.12",
-    "wrangler": "^4.24.0"
+    "wrangler": "^4.24.3"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

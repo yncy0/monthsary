@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const user = useSupabaseUser();
+const { userAuth } = useAuthState();
 const imageUrls = ref([]);
 
 onMounted(async () => {
   const results = await useFetchImage();
 
-  if (!user.value) {
+  if (!userAuth.value) {
     imageUrls.value = getMockImages();
   } else {
     imageUrls.value = results;
@@ -15,31 +15,17 @@ onMounted(async () => {
 
 <template>
   <Suspense>
-    <ul
-      class="flex flex-row flex-wrap w-full object-cover gap-5 lg:gap-2 px-6 lg:px-24"
-    >
+    <ul class="flex flex-row flex-wrap w-full object-cover gap-5 lg:gap-2 px-6 lg:px-24">
       <li v-for="(image, index) in imageUrls" :key="index">
-        <NuxtImg
-          v-if="!user"
-          v-slot="{ src, isLoaded, imgAttrs }"
-          :src="image"
-          alt="It is an image"
-          :custom="true"
-          class="flex-1 w-full lg:w-64 h-96 rounded-md"
-        >
-          <img v-if="isLoaded" v-bind="imgAttrs" :src="src" >
+        <NuxtImg v-if="!userAuth" v-slot="{ src, isLoaded, imgAttrs }" :src="image" alt="It is an image" :custom="true"
+          class="flex-1 w-full lg:w-64 h-96 rounded-md">
+          <img v-if="isLoaded" v-bind="imgAttrs" :src="src">
 
           <USkeleton v-else class="w-full lg:w-64 h-96" />
         </NuxtImg>
-        <NuxtImg
-          v-if="user"
-          v-slot="{ src, isLoaded, imgAttrs }"
-          :src="image.image_url"
-          alt="It is an image"
-          :custom="true"
-          class="w-full lg:w-64 h-96 rounded-md"
-        >
-          <img v-if="isLoaded" v-bind="imgAttrs" :src="src" >
+        <NuxtImg v-if="userAuth" v-slot="{ src, isLoaded, imgAttrs }" :src="image.image_url" alt="It is an image"
+          :custom="true" class="w-full lg:w-64 h-96 rounded-md">
+          <img v-if="isLoaded" v-bind="imgAttrs" :src="src">
 
           <USkeleton v-else class="w-full lg:w-64 h-96" />
         </NuxtImg>
