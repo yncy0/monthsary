@@ -72,15 +72,3 @@ async function signInWithOtp() {
     </form>
   </div>
 </template>
-
-<style scoped>
-.border-gradient {
-  position: relative;
-  padding: 3px;
-  background: linear-gradient(
-    to right,
-    var(--color-latte-primary),
-    var(--color-latte-secondary)
-  );
-}
-</style>
