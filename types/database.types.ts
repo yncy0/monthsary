@@ -14,7 +14,7 @@ export type Database = {
   }
   public: {
     Tables: {
-      date: {
+      date_plan: {
         Row: {
           created_at: string
           food_establishment: string | null
