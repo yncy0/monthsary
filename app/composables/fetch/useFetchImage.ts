@@ -1,9 +1,9 @@
 import type { Database } from "~/types/database.types";
 
 export async function useFetchImage() {
-  const supabase = useSupabaseClient<Database>();
+  const client = useSupabaseClient<Database>();
 
-  const { data, error } = await supabase
+  const { data, error } = await client
     .from("images")
     .select("*")
     .order("id", { ascending: true });

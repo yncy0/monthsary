@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     "@tresjs/nuxt",
     "@nuxt/eslint",
     "@nuxtjs/color-mode",
+    "reka-ui/nuxt"
   ],
 
   eslint: {
