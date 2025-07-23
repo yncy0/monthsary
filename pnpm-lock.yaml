@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@internationalized/date':
-        specifier: ^3.8.2
-        version: 3.8.2
       '@nuxt/content':
         specifier: 3.4.0
         version: 3.4.0(magicast@0.3.5)(typescript@5.8.3)
@@ -74,9 +71,6 @@ importers:
       pnpm:
         specifier: ^10.13.1
         version: 10.13.1
-      reka-ui:
-        specifier: ^2.3.2
-        version: 2.3.2(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3))
       tailwindcss:
         specifier: ^4.1.11
         version: 4.1.11
@@ -5936,11 +5930,6 @@ packages:
 
   reka-ui@2.3.1:
     resolution: {integrity: sha512-2SjGeybd7jvD8EQUkzjgg7GdOQdf4cTwdVMq/lDNTMqneUFNnryGO43dg8WaM/jaG9QpSCZBvstfBFWlDdb2Zg==}
-    peerDependencies:
-      vue: '>= 3.2.0'
-
-  reka-ui@2.3.2:
-    resolution: {integrity: sha512-lCysSCILH2uqShEnt93/qzlXnB7ySvK7scR0Q5C+a2iXwFVzHhvZQsMaSnbQYueoCihx6yyUZTYECepnmKrbRA==}
     peerDependencies:
       vue: '>= 3.2.0'
 
@@ -14194,23 +14183,6 @@ snapshots:
       unist-util-visit: 5.0.0
 
   reka-ui@2.3.1(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)):
-    dependencies:
-      '@floating-ui/dom': 1.7.2
-      '@floating-ui/vue': 1.1.7(vue@3.5.17(typescript@5.8.3))
-      '@internationalized/date': 3.8.2
-      '@internationalized/number': 3.6.3
-      '@tanstack/vue-virtual': 3.13.12(vue@3.5.17(typescript@5.8.3))
-      '@vueuse/core': 12.8.2(typescript@5.8.3)
-      '@vueuse/shared': 12.8.2(typescript@5.8.3)
-      aria-hidden: 1.2.6
-      defu: 6.1.4
-      ohash: 2.0.11
-      vue: 3.5.17(typescript@5.8.3)
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - typescript
-
-  reka-ui@2.3.2(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)):
     dependencies:
       '@floating-ui/dom': 1.7.2
       '@floating-ui/vue': 1.1.7(vue@3.5.17(typescript@5.8.3))
