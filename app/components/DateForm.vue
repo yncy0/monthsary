@@ -1,26 +1,39 @@
 <script setup lang="ts">
-import type { Database } from "~/types/database.types.ts";
+import * as v from "valibot"
+import type { FormSubmitEvent } from "@nuxt/ui";
 
 const { userAuth } = useAuthState();
 
-// FIXME: bad design
+const schema = v.object({
+  moodSpectrum: v.pipe(v.string(), v.nonEmpty("Please enter your mood today.")),
+  place: v.pipe(v.string(), v.nonEmpty("Please enter where you want to go.")),
+  foodEstablishment: v.pipe(v.string(), v.nonEmpty("Please enter where you want to eat.")),
+  meetingTime:  v.pipe(v.string(), v.nonEmpty("Please enter what time you prefer.")),
+})
 
-const moodSpectrum = ref<string | undefined>(undefined);
-const place = ref<string | undefined>(undefined);
-const foodEstablishment = ref<string | undefined>(undefined);
-const meetingTime = ref<string | undefined>(undefined);
+type Schema = v.InferOutput<typeof schema>
 
-async function onFormSubmit() {
+const state = reactive({
+  moodSpectrum: '',
+  place: '', 
+  foodEstablishment: '',
+  meetingTime: ''
+})
+
+const toast = useToast()
+async function onFormSubmit(event: FormSubmitEvent<Schema>) {
   let insert
 
   try {
-    if (moodSpectrum.value && place.value && foodEstablishment.value && meetingTime.value) {
+    if (event.data) {
       insert = await useInsertDatePlan(
-        moodSpectrum.value,
-        place.value,
-        foodEstablishment.value,
-        meetingTime.value,
+        event.data.moodSpectrum,
+        event.data.place,
+        event.data.foodEstablishment,
+        event.data.meetingTime,
       );
+
+      toast.add({ title: "Success", description: 'Form has been submitted succesfully.', color: 'success'})
     }
   } catch (error) {
     console.error(error)
@@ -28,52 +41,42 @@ async function onFormSubmit() {
   return insert;
 }
 
-async function onFormSubmitTest() {
-  const client = useSupabaseClient<Database>()
-
-  try {
-    const { data, error } = await client
-      .from("date_plan")
-      .insert(
-        {
-          mood_spectrum: moodSpectrum.value,
-          place: place.value,
-          food_establishment: foodEstablishment.value,
-          meeting_time: meetingTime.value,
-        }
-      )
-      .select()
-
-    if (data) console.log(data)
-
-    if (error) throw error
-
-  } catch (error) {
-    console.error(error)
-  }
-
-}
 </script>
 
 <template>
-  <form v-if="userAuth" class="flex flex-col gap-3" @submit.prevent="onFormSubmit">
-    <UFormField label="How's your day?">
-      <UInput v-model="moodSpectrum" placeholder="Answer Please" class="w-full" :ui="{ base: 'py-3' }" />
+  <UForm  v-if="userAuth" :schema="schema" :state="state" class="flex flex-col gap-3" @submit.prevent="onFormSubmit">
+    <UFormField label="How's your day?" name="moodSpectrum" required>
+      <UInput 
+        v-model="state.moodSpectrum"
+        placeholder="Answer Please"
+        class="w-full"
+        :ui="{ base: 'py-3' }"
+      />
     </UFormField>
-    <UFormField label="Where do you want to go out?">
-      <UInput v-model="place" placeholder="SM MOA, Boracay, Baguio, etc..." class="w-full" :ui="{ base: 'py-3' }" />
+
+    <UFormField label="Where do you want to go out?" name="place" required>
+      <UInput 
+        v-model="state.place"
+        placeholder="SM MOA, Boracay, Baguio, etc..." 
+        class="w-full"
+        :ui="{ base: 'py-3' }"
+      />
     </UFormField>
-    <UFormField label="Where do you want to eat?">
+
+    <UFormField label="Where do you want to eat?" name="foodEstablishment" required>
       <UInput
-v-model="foodEstablishment" placeholder="Vikings, Jollibee, McDonalds, etc..." class="w-full"
+        v-model="state.foodEstablishment"
+        placeholder="Vikings, Jollibee, McDonalds, etc..."
+        class="w-full"
         :ui="{ base: 'py-3' }" />
     </UFormField>
-    <UFormField label="What time should we met?">
-      <UInput v-model="meetingTime" type="time" />
+
+    <UFormField label="What time should we met?" name="meetingTime" required>
+      <UInput v-model="state.meetingTime" type="time" />
     </UFormField>
 
     <USeparator class="py-4" />
 
     <UButton type="submit" label="Submit" variant="subtle" class="flex justify-center" />
-  </form>
+  </UForm>
 </template>
