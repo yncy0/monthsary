@@ -1,9 +1,26 @@
 <script setup lang="ts">
 const { userAuth } = useAuthState();
+
+const open = ref<boolean>(false);
+
+console.log(open.value)
+
+watch(open, async() => {
+  if (open.value === false) {
+    console.log("It is supposed to be closed")
+  } else {
+    console.log("It is open")
+  }
+})
+
+function testOpenValue() {
+  console.log(open.value)
+}
+
 </script>
 
 <template>
-  <UModal title="Let me ask you some questions">
+  <UModal v-model:open="open" title="Let me ask you some questions">
     <UButton 
       v-if="userAuth" 
       label="Let's Get Started"
@@ -12,9 +29,10 @@ const { userAuth } = useAuthState();
       trailing-icon="i-lucide-arrow-right"
       class="px-4 py-2" 
       :block="false" 
+      @click.prevent="testOpenValue"
     />
     <template #body>
-      <DateForm />
+      <DateForm v-model="open"/>
     </template>
   </UModal>
 </template>

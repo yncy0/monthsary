@@ -4,6 +4,12 @@ import type { FormSubmitEvent } from "@nuxt/ui";
 
 const { userAuth } = useAuthState();
 
+const model = defineModel<boolean>();
+
+function onClose() {
+  model.value = false;
+}
+
 const schema = v.object({
   moodSpectrum: v.pipe(v.string(), v.nonEmpty("Please enter your mood today.")),
   place: v.pipe(v.string(), v.nonEmpty("Please enter where you want to go.")),
@@ -34,6 +40,7 @@ async function onFormSubmit(event: FormSubmitEvent<Schema>) {
       );
 
       toast.add({ title: "Success", description: 'Form has been submitted succesfully.', color: 'success'})
+      onClose()
     }
   } catch (error) {
     console.error(error)
@@ -77,6 +84,6 @@ async function onFormSubmit(event: FormSubmitEvent<Schema>) {
 
     <USeparator class="py-4" />
 
-    <UButton type="submit" label="Submit" variant="subtle" class="flex justify-center" />
+    <UButton type="submit" label="Submit" variant="subtle" class="flex justify-center"/>
   </UForm>
 </template>
