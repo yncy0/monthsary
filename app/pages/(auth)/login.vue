@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import * as v from "valibot"
 import type { FormSubmitEvent } from "@nuxt/ui";
 
 definePageMeta({
@@ -12,14 +11,10 @@ const local = "http://localhost:3000/confirm";
 
 const toast = useToast();
 
-const schema = v.object({email: v.pipe(v.string(), v.email("Invalid email"))})
-
-type Schema = v.InferInput<typeof schema>
-
 const state = reactive({email: ''})
 
 
-async function signInWithOtp(event: FormSubmitEvent<Schema>) {
+async function signInWithOtp(event: FormSubmitEvent<LoginSchema>) {
   const { error } = await supabase.auth.signInWithOtp({
     email: event.data.email,
     options: {
@@ -48,7 +43,7 @@ async function signInWithOtp(event: FormSubmitEvent<Schema>) {
   <NyaNyaOrangeWhite/>
   <div class="border-gradient rounded-lg w-full lg:w-[720px]">
     <UForm
-      :schema="schema"
+      :schema="loginSchema"
       :state="state"
       class="flex flex-col justify-center items-center gap-10 lg:gap-5 px-12 py-20 lg:p-20 z-50 bg-mocha-base rounded-md text-center"
       @submit.prevent="signInWithOtp"
