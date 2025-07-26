@@ -6,6 +6,10 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
 
+  future: {
+    compatibilityVersion: 4
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },
@@ -20,6 +24,7 @@ export default defineNuxtConfig({
     "@tresjs/nuxt",
     "@nuxt/eslint",
     "@nuxtjs/color-mode",
+    "reka-ui/nuxt"
   ],
 
   eslint: {

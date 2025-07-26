@@ -77,9 +77,16 @@ canvas {
   left: 0;
   position: fixed;
   width: 100%;
-  /* pointer-events: none; */
+  pointer-events: none;
 }
 
-/* main {
-  position: absolute;
-} */
+.border-gradient {
+  position: relative;
+  padding: 3px;
+  background: linear-gradient(
+    to right,
+    var(--color-latte-primary),
+    var(--color-latte-secondary)
+  );
+}
+

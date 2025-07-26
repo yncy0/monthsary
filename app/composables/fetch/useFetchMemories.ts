@@ -1,9 +1,9 @@
 import type { Database } from "~/types/database.types";
 
 export async function useFetchMemories() {
-  const supabase = useSupabaseClient<Database>();
+  const client = useSupabaseClient<Database>();
 
-  const { data, error } = await supabase
+  const { data, error } = await client
     .from("memories")
     .select(` *, images(id, image_url, unique_id)`)
     .order("date", { ascending: true });
