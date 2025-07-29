@@ -72,8 +72,10 @@ async function signOut() {
 <template>
   <header class="fixed top-0 left-0 w-full z-30 bg-mocha-crust">
     <div class="flex flex-row items-center p-2 gap-4 justify-between lg:justify-around">
+      <!-- Icon -->
       <img src="/favicon-16x16.png" width="32" height="32" >
 
+      <!-- Navigation Menu -->
       <UNavigationMenu
         :items="items"
         orientation="horizontal"
@@ -82,14 +84,17 @@ async function signOut() {
         class="gap-2 hidden lg:flex"
       />
 
+      <!-- Auth Button -->
       <span class="hidden lg:flex">
         <UButton v-if="!user" label="Login" variant="subtle" to="/login" />
         <UButton v-else label="Logout" variant="subtle" @click="signOut" />
       </span>
 
+      <!-- Hamburger Menu -->
       <USlideover v-model:open="open" class="flex lg:hidden">
         <UButton icon="i-lucide-align-justify" variant="ghost" />
 
+      <!-- Navigation Menu -->
         <template #body>
           <UNavigationMenu
             :items="items"
