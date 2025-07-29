@@ -44,6 +44,7 @@ export type Database = {
       images: {
         Row: {
           created_at: string
+          date: string | null
           event: string | null
           id: number
           image_url: string | null
@@ -51,6 +52,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          date?: string | null
           event?: string | null
           id?: number
           image_url?: string | null
@@ -58,6 +60,7 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          date?: string | null
           event?: string | null
           id?: number
           image_url?: string | null
@@ -65,7 +68,7 @@ export type Database = {
         }
         Relationships: []
       }
-      memories: {
+      index_memories: {
         Row: {
           created_at: string
           date: string | null
@@ -89,7 +92,7 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "memories_images_id_fkey"
+            foreignKeyName: "index_memories_images_id_fkey"
             columns: ["images_id"]
             isOneToOne: false
             referencedRelation: "images"
@@ -97,7 +100,7 @@ export type Database = {
           },
         ]
       }
-      roadmap: {
+      index_roadmap: {
         Row: {
           body: string | null
           created_at: string
@@ -124,7 +127,7 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "roadmap_image_id_fkey"
+            foreignKeyName: "index_roadmap_image_id_fkey"
             columns: ["image_id"]
             isOneToOne: false
             referencedRelation: "images"

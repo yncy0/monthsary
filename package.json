@@ -45,7 +45,6 @@
     "@iconify-json/lucide": "^1.2.57",
     "@vueuse/core": "^13.5.0",
     "@vueuse/nuxt": "^13.5.0",
-    "supabase": "^2.31.8",
     "typescript": "^5.8.3",
     "vue-tsc": "^2.2.12",
     "wrangler": "^4.25.0"
