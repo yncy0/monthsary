@@ -3,20 +3,6 @@ const { userAuth } = useAuthState();
 
 const open = ref<boolean>(false);
 
-console.log(open.value)
-
-watch(open, async() => {
-  if (open.value === false) {
-    console.log("It is supposed to be closed")
-  } else {
-    console.log("It is open")
-  }
-})
-
-function testOpenValue() {
-  console.log(open.value)
-}
-
 </script>
 
 <template>

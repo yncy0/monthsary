@@ -5,10 +5,13 @@ For more infor: visit https://ui3.nuxt.dev/getting-started -->
 const client = useSupabaseClient();
 const user = useSupabaseUser();
 
+const open = ref<boolean>(false)
+
 const items = ref([
   {
     label: "Home",
     to: "/",
+    onSelect: () => onClose(),
     children: [
       {
         label: "Go back",
@@ -34,11 +37,13 @@ const items = ref([
   {
     label: "Gallery",
     to: "gallery",
+    onSelect: () => onClose(),
   },
 
   {
     label: "Roadmap",
     to: "roadmap",
+    onSelect: () => onClose(),
   },
 ]);
 
@@ -52,6 +57,11 @@ function scrollTo(s: string) {
   });
 }
 
+function onClose() {
+  open.value = false;
+  console.log("CLICKING ", open.value)
+}
+
 async function signOut() {
   const { error } = await client.auth.signOut();
   if (error) throw error;
@@ -61,22 +71,35 @@ async function signOut() {
 <!--It uses NavigationMenu from NuxtUI, for more infor visit: https://ui3.nuxt.dev/components/navigation-menu-->
 <template>
   <header class="fixed top-0 left-0 w-full z-30 bg-mocha-crust">
-    <div class="flex flex-row items-center p-2 gap-4 justify-around">
-      <UButton color="neutral" variant="ghost" class="hover:bg-mocha-crust"> 
-        <img src="/favicon-16x16.png" width="32" height="32">
-      </UButton>
+    <div class="flex flex-row items-center p-2 gap-4 justify-between lg:justify-around">
+      <img src="/favicon-16x16.png" width="32" height="32" >
+
       <UNavigationMenu
         :items="items"
         orientation="horizontal"
-        variant="link"
+        variant="link" 
         content-orientation="vertical"
-        class="gap-2"
+        class="gap-2 hidden lg:flex"
       />
 
-      <span>
+      <span class="hidden lg:flex">
         <UButton v-if="!user" label="Login" variant="subtle" to="/login" />
         <UButton v-else label="Logout" variant="subtle" @click="signOut" />
       </span>
+
+      <USlideover v-model:open="open" class="flex lg:hidden">
+        <UButton icon="i-lucide-align-justify" variant="ghost" />
+
+        <template #body>
+          <UNavigationMenu
+            :items="items"
+            orientation="vertical"
+            variant="link" 
+            content-orientation="vertical"
+            class="gap-2"
+          />
+        </template>
+      </USlideover>
     </div>
     <USeparator />
   </header>
