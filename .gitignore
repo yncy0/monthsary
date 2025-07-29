@@ -23,8 +23,5 @@ logs
 .env.*
 !.env.example
 
+# Cloudflare
 .wrangler
-
-# Supabase schema
-supabase/migrations
-supabase/migrations/*
