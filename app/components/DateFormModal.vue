@@ -15,7 +15,6 @@ const open = ref<boolean>(false);
       trailing-icon="i-lucide-arrow-right"
       class="px-4 py-2" 
       :block="false" 
-      @click.prevent="testOpenValue"
     />
     <template #body>
       <DateForm v-model="open"/>
