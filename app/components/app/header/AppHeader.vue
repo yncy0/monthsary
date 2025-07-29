@@ -61,7 +61,10 @@ async function signOut() {
 <!--It uses NavigationMenu from NuxtUI, for more infor visit: https://ui3.nuxt.dev/components/navigation-menu-->
 <template>
   <header class="fixed top-0 left-0 w-full z-30 bg-mocha-crust">
-    <div class="flex flex-row items-center p-2 gap-4 w-full justify-center">
+    <div class="flex flex-row items-center p-2 gap-4 justify-around">
+      <UButton color="neutral" variant="ghost" class="hover:bg-mocha-crust"> 
+        <img src="/favicon-16x16.png" width="32" height="32">
+      </UButton>
       <UNavigationMenu
         :items="items"
         orientation="horizontal"
