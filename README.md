@@ -56,6 +56,3 @@ supabase start
 ```
 
 *Warning: if you are on Linux, Docker is not included in root permission. If that's the case you can include it on root permissions or run it with ```sudo``` command.*
-
-## License 
-This project is under The Creative Commons Attribution. 
