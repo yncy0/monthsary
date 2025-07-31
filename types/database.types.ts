@@ -41,10 +41,28 @@ export type Database = {
         }
         Relationships: []
       }
-      images: {
+      dim_date: {
         Row: {
           created_at: string
           date: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          date?: string | null
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          date?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
+      images: {
+        Row: {
+          created_at: string
+          date_id: string | null
           event: string | null
           id: number
           image_url: string | null
@@ -52,7 +70,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string
-          date?: string | null
+          date_id?: string | null
           event?: string | null
           id?: number
           image_url?: string | null
@@ -60,13 +78,21 @@ export type Database = {
         }
         Update: {
           created_at?: string
-          date?: string | null
+          date_id?: string | null
           event?: string | null
           id?: number
           image_url?: string | null
           unique_id?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "images_date_id_fkey"
+            columns: ["date_id"]
+            isOneToOne: false
+            referencedRelation: "dim_date"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       index_memories: {
         Row: {

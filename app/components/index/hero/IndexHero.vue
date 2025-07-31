@@ -11,7 +11,7 @@ const { userAuth } = useAuthState();
       <h1
         class="text-5xl md:text-7xl lg:text-8xl text-transparent heading-gradient bg-clip-text font-bold text-center"
       >
-        Happy 6th
+        Happy 8th
         <span class="text-transparent bg-clip-text"> Monthsary </span>
         <br>
         <span
