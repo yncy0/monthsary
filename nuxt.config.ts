@@ -5,18 +5,18 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-  
+
   app: {
     head: {
       link: [
-        {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
-        {rel: 'icon', type: 'image/png', href: '/favicon-16x16.png'}
-      ]
-    }
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        { rel: "icon", type: "image/png", href: "/favicon-16x16.png" },
+      ],
+    },
   },
 
   future: {
-    compatibilityVersion: 4
+    compatibilityVersion: 4,
   },
 
   vite: {
@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     "@tresjs/nuxt",
     "@nuxt/eslint",
     "@nuxtjs/color-mode",
-    "reka-ui/nuxt"
+    "reka-ui/nuxt",
   ],
 
   eslint: {
@@ -57,6 +57,14 @@ export default defineNuxtConfig({
       include: undefined,
       exclude: ["/", "/gallery", "/roadmap", "/login", "/confirm"],
       saveRedirectToCookie: false,
+    },
+  },
+
+  runtimeConfig: {
+    public: {
+      supabaseRedirect:
+        process.env.NUXT_PUBLIC_SUPABASE_REDIRECT ||
+        "http://localhost:3000/confirm",
     },
   },
 
