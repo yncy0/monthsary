@@ -72,13 +72,6 @@ img {
   object-fit: cover;
 }
 
-canvas {
-  top: 0;
-  left: 0;
-  position: fixed;
-  width: 100%;
-  pointer-events: none;
-}
 
 .border-gradient {
   position: relative;
