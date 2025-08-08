@@ -7,7 +7,7 @@ definePageMeta({
 });
 
 const supabase = useSupabaseClient();
-const local = "http://localhost:3000/confirm";
+const configUrl = useRuntimeConfig().public.supabaseRedirect
 
 const toast = useToast();
 
@@ -19,7 +19,7 @@ async function signInWithOtp(event: FormSubmitEvent<LoginSchema>) {
     email: event.data.email,
     options: {
       shouldCreateUser: false,
-      emailRedirectTo: local,
+      emailRedirectTo: configUrl,
     },
   });
   if (error) {
