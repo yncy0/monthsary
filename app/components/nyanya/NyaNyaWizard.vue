@@ -11,7 +11,6 @@ const container = useTemplateRef("container")
 onMounted(async () => {
   await nextTick();
   init();
-  console.log("WIDTH: ", container.value.clientWidth)
 });
 
 useResizeObserver(container, () => {
@@ -30,7 +29,7 @@ function init() {
     100,
   );
 
-  camera.position.set(0, 3, 13);
+  camera.position.set(0, 3, 7);
 
   ambientLight = new THREE.AmbientLight(0xffffff, 1);
   directionalLight = new THREE.DirectionalLight(0xffffff, 2);
@@ -56,6 +55,8 @@ function loadModel() {
     const model = gltf.scene;
     scene.add(model);
 
+    model.rotation.set(degreesToRadians(10), degreesToRadians(-17), degreesToRadians(0))
+
     renderer.setAnimationLoop(animate);
   });
 }
@@ -75,5 +76,5 @@ function onWindowResize() {
 </script>
 
 <template>
-  <div ref="container" class="w-full lg:w-1/2 max-w-screen lg:h-dvh relative" />
+  <div ref="container" class="w-full lg:w-1/2 max-w-screen h-[480px] lg:h-dvh relative" />
 </template>
