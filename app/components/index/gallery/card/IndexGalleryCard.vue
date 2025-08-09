@@ -13,15 +13,11 @@ const props = defineProps<{
     <template #header>
       <div class="flex flex-col gap-4">
         <NuxtImg
-          v-slot="{src, isLoaded, imgAttrs}"
           :src="props.imgSrc"
           class="rounded-lg h-[320px] lg:size-[320px] object-cover"
-          :custom="true"
-        >
-          <img v-if="isLoaded" v-bind="imgAttrs" :src=src>
+          placeholder="/images/cat-thunder.png"
+        />
 
-          <USkeleton v-else class="rounded-lg lg:w-[270] lg:h-[320px]" />
-        </NuxtImg>
         <h3 class="text-2xl font-bold">
           {{ props.header }}
         </h3>

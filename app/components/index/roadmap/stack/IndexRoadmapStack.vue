@@ -15,14 +15,10 @@ const flexDir = ref(props.isReversed ? "row-reverse" : "row");
     :style="{ flexDirection: flexDir }"
   >
     <NuxtImg
-      v-slot="{ src, isLoaded, imgAttrs }"
       :src="props.imgSource"
-      :custom="true"
       class="flex flex-1 max-w-screen h-[320px] lg:size-[360px] rounded-lg"
-    >
-      <img v-if="isLoaded" v-bind="imgAttrs" :src="src" />
-      <USkeleton v-else class="lg:size-[360px]" />
-    </NuxtImg>
+      placeholder="/images/cat.png"
+    />
     <div class="flex flex-col justify-center flex-1 lg:w-[360px]">
       <HeadingGlow
         :level="3"
