@@ -59,7 +59,6 @@ function scrollTo(s: string) {
 
 function onClose() {
   open.value = false;
-  console.log("CLICKING ", open.value)
 }
 
 async function signOut() {
