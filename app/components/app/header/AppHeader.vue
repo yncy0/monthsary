@@ -64,6 +64,8 @@ function onClose() {
 async function signOut() {
   const { error } = await client.auth.signOut();
   if (error) throw error;
+
+  window.location.reload()
 }
 </script>
 
