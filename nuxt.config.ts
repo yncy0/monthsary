@@ -10,7 +10,6 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@nuxt/ui",
     "@nuxt/fonts",
-    "@nuxt/image",
     "@nuxthub/core",
     "@nuxtjs/supabase",
     "@tresjs/nuxt",

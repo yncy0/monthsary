@@ -4,19 +4,13 @@ const props = defineProps<{
   header: string;
   description: string;
 }>();
-
-
 </script>
 
 <template>
   <UCard class="m-1 lg:h-[560px] bg-mocha-base py-5 lg:py-0">
     <template #header>
       <div class="flex flex-col gap-4">
-        <NuxtImg
-          :src="props.imgSrc"
-          class="rounded-lg h-[320px] lg:size-[320px] object-cover"
-          placeholder="/images/cat-thunder.png"
-        />
+        <img :src="props.imgSrc" class="rounded-lg h-[320px] lg:size-[320px] object-cover">
 
         <h3 class="text-2xl font-bold">
           {{ props.header }}
@@ -28,4 +22,4 @@ const props = defineProps<{
       <p>{{ props.description }}</p>
     </div>
   </UCard>
-</template> 
+</template>
