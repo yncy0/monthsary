@@ -6,6 +6,23 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
 
+  modules: [
+    "@vueuse/nuxt",
+    "@nuxt/ui",
+    "@nuxt/fonts",
+    "@nuxthub/core",
+    "@nuxtjs/supabase",
+    "@tresjs/nuxt",
+    "@nuxt/eslint",
+    "@nuxtjs/color-mode",
+    "reka-ui/nuxt",
+    "@nuxt/image",
+  ],
+
+  future: {
+    compatibilityVersion: 4,
+  },
+
   app: {
     head: {
       link: [
@@ -15,26 +32,9 @@ export default defineNuxtConfig({
     },
   },
 
-  future: {
-    compatibilityVersion: 4,
-  },
-
   vite: {
     plugins: [tailwindcss()],
   },
-
-  modules: [
-    "@vueuse/nuxt",
-    "@nuxt/ui",
-    "@nuxt/fonts",
-    "@nuxt/image",
-    "@nuxthub/core",
-    "@nuxtjs/supabase",
-    "@tresjs/nuxt",
-    "@nuxt/eslint",
-    "@nuxtjs/color-mode",
-    "reka-ui/nuxt",
-  ],
 
   eslint: {
     config: {

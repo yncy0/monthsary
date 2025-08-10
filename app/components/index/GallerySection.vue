@@ -31,7 +31,7 @@ onMounted(async () => {
       </p>
     </div>
     <div class="w-full max-w-screen lg:w-[1000px] px-4">
-      <IndexGalleryCarousel :items="items" :is-user="isUser" />
+      <GalleryCarousel :items="items" />
     </div>
   </section>
 </template>

@@ -1,7 +1,6 @@
 <script setup>
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 let scene, camera, renderer, controls;
 let model, mixer, clock;
@@ -37,9 +36,6 @@ function init() {
   renderer.setPixelRatio(window.devicePixelRation);
   renderer.setSize(window.innerWidth, window.innerHeight);
 
-  controls = new OrbitControls(camera, canvas);
-  controls.update();
-
   loadModel();
 }
 
@@ -62,7 +58,7 @@ function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
 
-  renderer.setSize(window.innerWidth , window.innerHeight);
+  renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
 function animate() {
@@ -77,3 +73,12 @@ function animate() {
 <template>
   <canvas id="bg" />
 </template>
+
+<style scoped>
+canvas {
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+}
+</style>

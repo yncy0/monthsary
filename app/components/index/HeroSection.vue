@@ -5,7 +5,7 @@ const { userAuth } = useAuthState();
 <template>
   <section
     id="hero"
-    class="flex flex-col items-center justify-center w-full h-[720px] mb-44"
+    class="flex flex-col items-center justify-center w-full h-dvh"
   >
     <section class="flex flex-col gap-2 z-10">
       <h1

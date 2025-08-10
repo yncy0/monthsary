@@ -7,5 +7,5 @@ export const schema = v.object({
   meetingTime:  v.pipe(v.string(), v.nonEmpty("Please enter what time you prefer.")),
 })
 
-export type Schema = v.InferOutput<typeof schema>
+export type DateSchema = v.InferOutput<typeof schema>
 

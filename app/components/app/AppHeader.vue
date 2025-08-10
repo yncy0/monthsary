@@ -2,9 +2,6 @@
 For more infor: visit https://ui3.nuxt.dev/getting-started -->
 
 <script setup lang="ts">
-const client = useSupabaseClient();
-const user = useSupabaseUser();
-
 const open = ref<boolean>(false)
 
 const items = ref([
@@ -59,13 +56,8 @@ function scrollTo(s: string) {
 
 function onClose() {
   open.value = false;
-  console.log("CLICKING ", open.value)
 }
 
-async function signOut() {
-  const { error } = await client.auth.signOut();
-  if (error) throw error;
-}
 </script>
 
 <!--It uses NavigationMenu from NuxtUI, for more infor visit: https://ui3.nuxt.dev/components/navigation-menu-->
@@ -86,8 +78,7 @@ async function signOut() {
 
       <!-- Auth Button -->
       <span class="hidden lg:flex">
-        <UButton v-if="!user" label="Login" variant="subtle" to="/login" />
-        <UButton v-else label="Logout" variant="subtle" @click="signOut" />
+        <AuthButton />
       </span>
 
       <!-- Hamburger Menu -->
@@ -101,8 +92,10 @@ async function signOut() {
             orientation="vertical"
             variant="link" 
             content-orientation="vertical"
-            class="gap-2"
+            class="gap-2 mb-10"
           />
+
+          <AuthButton class="mx-2"/>
         </template>
       </USlideover>
     </div>
