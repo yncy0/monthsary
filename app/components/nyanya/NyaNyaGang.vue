@@ -39,7 +39,7 @@ function init() {
   // call loadModel() manually **cannot loop it due to JSON error
   loadModel("/nyanya/nyanyapuccin_sapphire.glb", ...[13, 4, 0]);
   loadModel("/nyanya/nyanyapuccin_mauve.glb", ...[10, 0, 0]);
-  loadModel("/nyanya/nyanyapuccin_pink.glb", ...[0, -3, 0]);
+  loadModel("/nyanya/nyanyapuccin_pink.glb", ...[0, 6, 0]);
   loadModel("/nyanya/nyanyapuccin_green.glb", ...[-10, 0, 0]);
   loadModel("/nyanya/nyanyapuccin_yellow.glb", ...[-13, 4, 0]);
 
@@ -95,5 +95,6 @@ canvas {
   left: 0;
   position: fixed;
   width: 100%;
+  z-index: -555;
 }
 </style>
