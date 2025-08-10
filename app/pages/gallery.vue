@@ -8,7 +8,7 @@ definePageMeta({
   <main class="flex flex-col gap-64">
     <GalleryHero class="z-10" />
     <section class="flex flex-col gap-2 z-20">
-      <LazyGalleryImages />
+      <GalleryImages />
     </section>
   </main>
 </template>
