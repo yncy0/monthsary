@@ -19,7 +19,7 @@ export function getMockGallery() {
       date: "April 2, 2018",
     },
     {
-      image_url: "/images/tilapia.png",
+      image_url: "/images/cat-tilapia.png",
       description:
         "After a night of stargazing, the words just slipped out—and they felt more right than anything else.",
       date: "June 10, 2018",
