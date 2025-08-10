@@ -7,10 +7,10 @@ definePageMeta({
 <template>
   <main>
     <NyaNyaGang />
-    <IndexHero />
+    <HeroSection />
 
-    <IndexGallery />
+    <GallerySection />
 
-    <IndexRoadmap />
+    <RoadmapSection />
   </main>
 </template>

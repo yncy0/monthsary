@@ -22,13 +22,13 @@ dayjs.extend(timezone);
     :items="props.items"
     :ui="{ item: 'basis-full sm:basis-1/2 md:basis-1/3' }"
   >
-    <IndexGalleryCard
+    <GalleryCard
       v-if="props.isUser"
       :img-src="item.images.image_url"
       :description="item.description"
       :header="dayjs(item.date).tz('Asia/Manila').format('MMMM DD, YYYY')"
     />
-    <IndexGalleryCard
+    <GalleryCard
       v-else
       :img-src="item.image_url"
       :description="item.description"

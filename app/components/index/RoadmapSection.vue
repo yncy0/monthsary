@@ -20,9 +20,9 @@ onMounted(async () => {
     <p class="text-sm lg:text-lg">Lists of accomplished goals</p>
     <section v-for="(item, index) in items" :key="index"
       class="px-6 pt-10 lg:px-20 lg:pt-20 mb-10 w-full flex flex-col">
-      <IndexRoadmapStack v-if="!userAuth" :is-reversed="evenOrOdd(index)" :img-source="item.img" :header="item.header"
+      <RoadmapStack v-if="!userAuth" :is-reversed="evenOrOdd(index)" :img-source="item.img" :header="item.header"
         :body="item.body" />
-      <IndexRoadmapStack v-if="userAuth" :is-reversed="evenOrOdd(index)" :img-source="item.images.image_url"
+      <RoadmapStack v-if="userAuth" :is-reversed="evenOrOdd(index)" :img-source="item.images.image_url"
         :header="item.header" :body="item.body" />
     </section>
     <UButton label="See More..." trailing-icon="i-lucide-arrow-right" variant="subtle" :block="false"
