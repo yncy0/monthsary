@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     "@nuxt/eslint",
     "@nuxtjs/color-mode",
     "reka-ui/nuxt",
+    "@nuxt/image",
   ],
 
   future: {
