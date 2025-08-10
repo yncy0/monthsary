@@ -17,8 +17,6 @@ const schema = v.object({
   meetingTime:  v.pipe(v.string(), v.nonEmpty("Please enter what time you prefer.")),
 })
 
-type Schema = v.InferOutput<typeof schema>
-
 const state = reactive({
   moodSpectrum: '',
   place: '', 
@@ -27,7 +25,7 @@ const state = reactive({
 })
 
 const toast = useToast()
-async function onFormSubmit(event: FormSubmitEvent<Schema>) {
+async function onFormSubmit(event: FormSubmitEvent<DateSchema>) {
   let insert
 
   try {
