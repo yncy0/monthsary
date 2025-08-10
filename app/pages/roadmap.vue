@@ -48,7 +48,7 @@ function moveCamera() {
 </script>
 
 <template>
-  <main class="mt-32 pb-32">
+  <main class="flex flex-col items-center justify-center mt-32 pb-32">
     <canvas id="bg"/>
     <section class="text-center mb-10">
       <h1 class="text-5xl lg:text-6xl text-latte-primary font-bold">Roadmap</h1>
