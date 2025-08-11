@@ -1,5 +1,7 @@
 <script setup>
 const { userAuth } = useAuthState();
+
+const monthsary = monthlyIncrement()
 </script>
 
 <template>
@@ -11,7 +13,7 @@ const { userAuth } = useAuthState();
       <h1
         class="text-5xl md:text-7xl lg:text-8xl text-transparent heading-gradient bg-clip-text font-bold text-center"
       >
-        Happy 8th
+        Happy {{monthsary}}th
         <span class="text-transparent bg-clip-text"> Monthsary </span>
         <br>
         <span
