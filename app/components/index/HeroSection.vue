@@ -1,7 +1,11 @@
-<script setup>
+<script setup lang="ts">
 const { userAuth } = useAuthState();
 
-const monthsary = monthlyIncrement()
+const year: string = "2024"
+const month: string = "11"
+const day: string = "30"
+
+const monthsary = monthlyIncrement(year, month, day)
 </script>
 
 <template>

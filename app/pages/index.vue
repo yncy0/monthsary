@@ -2,11 +2,6 @@
 definePageMeta({
   colorMode: "dark"
 })
-
-onMounted(() => {
-  monthlyIncrement()  
-})
-
 </script>
 
 <template>
