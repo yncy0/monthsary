@@ -1,24 +1,53 @@
-<script setup lang="ts">
+<script setup>
 import * as THREE from "three";
 
-const stars: THREE.Mesh[] = [];
+let scene, camera, light, renderer
 
-const geometry = new THREE.SphereGeometry(0.1, 32, 16);
-const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+onMounted(async () => {
+  init()
+  animate()
+  document.body.onScroll = moveCamera;
+});
 
-for (let i = 0; i < 200; i++) {
-  const star = new THREE.Mesh(geometry, material);
-  const [x, y, z] = Array(3)
-    .fill(0)
-    .map(() => THREE.MathUtils.randFloatSpread(200));
-  star.position.set(x, y, z);
+function init() {
+  scene = new THREE.Scene()
+  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100)
+  camera.position.set(0, 0, 12)
 
-  stars.push(star);
+  light = new THREE.AmbientLight(0xffffff, 1)
+
+  scene.add(camera, light)
+
+  const canvas = document.querySelector("#bg")
+  renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true })
+  renderer.setPixelRatio(window.devicePixelRatio)
+  renderer.setSize(window.innerWidth, window.innerHeight)
+
+  generateStars(scene)
+}
+
+function animate() {
+  requestAnimationFrame(animate)
+
+  renderer.render(scene, camera)
+}
+
+function moveCamera() {
+  const t = document.getBoundingClientRect().top
+
+  camera.position.y = t * 0.017
 }
 </script>
 
 <template>
-  <template v-for="s in stars">
-    <primitive :object="s" />
-  </template>
+  <canvas id="bg" />
 </template>
+
+<style scoped>
+canvas {
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: -9999;
+}
+</style>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T">
 import type { MockRoadmap } from '#imports';
 
 const props = defineProps<MockRoadmap>();

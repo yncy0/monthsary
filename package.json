@@ -25,7 +25,6 @@
     "@supabase/supabase-js": "^2.54.0",
     "@tailwindcss/vite": "^4.1.11",
     "@tresjs/cientos": "^4.3.1",
-    "@tresjs/core": "^4.3.6",
     "@tresjs/nuxt": "^3.0.8",
     "@tresjs/post-processing": "^2.4.0",
     "@types/three": "^0.175.0",

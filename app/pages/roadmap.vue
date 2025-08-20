@@ -1,55 +1,22 @@
-<script setup lang="ts">
-import * as THREE from "three"
+<script setup lang="ts" generic="T">
+import type { MockRoadmap } from "#imports"
 
 definePageMeta({
   colorMode: "dark"
 })
 
-const items = ref([]);
-
-let scene, camera, light,  renderer
+const items = ref<MockRoadmap[] | T[]>([]);
 
 onMounted(async () => {
-  items.value = getMockRoadmap();
-
-  init()
-  animate()
-  document.body.onScroll = moveCamera;
-});
-
-function init() {
-  scene = new THREE.Scene()
-  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100)
-  camera.position.set(0, 0, 12)
-
-  light = new THREE.AmbientLight(0xffffff, 1)
-
-  scene.add(camera, light)
-
-  const canvas = document.querySelector("#bg")
-  renderer = new THREE.WebGLRenderer({canvas: canvas, alpha: true})
-  renderer.setPixelRatio(window.devicePixelRatio)
-  renderer.setSize(window.innerWidth, window.innerHeight)
-
-  generateStars(scene)
-}
-
-function animate() {
-  requestAnimationFrame(animate)
-
-  renderer.render(scene, camera)
-}
-
-function moveCamera() {
-  const t = document.getBoundingClientRect().top
-
-  camera.position.y = t * 0.017
-}
+  if (items.value) {
+    items.value = getMockRoadmap();
+  }
+})
 </script>
 
 <template>
   <main class="flex flex-col items-center justify-center mt-32 pb-32">
-    <canvas id="bg"/>
+    <GeneratedStars />
     <section class="text-center mb-10">
       <h1 class="text-5xl lg:text-6xl text-latte-primary font-bold">Roadmap</h1>
       <p class="text-sm lg:text-lg">
@@ -68,10 +35,3 @@ function moveCamera() {
   </main>
 </template>
 
-<style scoped>
-canvas {
-  top: 0;
-  left: 0;
-  position: fixed;
-}
-</style>
