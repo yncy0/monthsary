@@ -4,8 +4,9 @@ export async function useFetchRoadmap() {
   const client = useSupabaseClient<Database>();
 
   const { data, error } = await client
-    .from("index_roadmap")
+    .from("roadmap")
     .select(`*, images (id, image_url, unique_id)`)
+    .lt("index", "3")
     .order("index", { ascending: true });
 
   if (error) throw error;

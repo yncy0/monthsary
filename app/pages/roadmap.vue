@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import * as THREE from "three"
 
 definePageMeta({
@@ -60,8 +60,8 @@ function moveCamera() {
       <RoadmapCard
         v-for="(item, index) in items"
         :key="index"
-        :headings="item.header"
-        :description="item.body"
+        :title="item.title"
+        :description="item.description"
         class="mt-5 lg:mt-10"
       />
     </section>
