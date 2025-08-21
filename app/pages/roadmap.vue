@@ -5,11 +5,15 @@ definePageMeta({
   colorMode: "dark"
 })
 
-const items = ref<MockRoadmap[] | T[]>([]);
+const { userAuth } = useAuthState();
+
+const items = ref<MockRoadmap | T>([]);
 
 onMounted(async () => {
-  if (items.value) {
+  if (!userAuth) {
     items.value = getMockRoadmap();
+  } else {
+    items.value = await useFetchRoadmap();
   }
 })
 </script>

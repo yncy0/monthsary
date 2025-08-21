@@ -2,10 +2,10 @@
 import type { MockRoadmap } from "#imports"
 const { userAuth } = useAuthState();
 
-const items = ref<MockRoadmap[] | T[]>([]);
+const items = ref<MockRoadmap | T>([]);
 
 onMounted(async () => {
-  const results = await useFetchRoadmap();
+  const results = await useFetchRoadmapRange("3");
 
   if (!userAuth.value) {
     items.value = getMockRoadmap();
