@@ -7,6 +7,7 @@ export { getMockRoadmap } from "./mock/roadmap";
 export { degreesToRadians } from "./helper/degreesToRadians";
 export { evenOrOdd } from "./helper/evenOrOdd";
 export { generateStars } from "./helper/generateStars";
+export { monthlyIncrement } from "./helper/monthlyIncrement";
 
 // schema/ directory
 export { loginSchema } from "./schema/login";

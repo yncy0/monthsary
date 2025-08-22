@@ -1,77 +1,54 @@
-<script setup>
-import * as THREE from "three"
+<script setup lang="ts" generic="T">
+import type { MockRoadmap } from "#imports"
 
 definePageMeta({
   colorMode: "dark"
 })
 
-const items = ref([]);
+const { userAuth } = useAuthState();
 
-let scene, camera, light,  renderer
+const items = ref<MockRoadmap | T>([]);
 
 onMounted(async () => {
-  items.value = getMockRoadmap();
+  const results = await useFetchRoadmap();
 
-  init()
-  animate()
-  document.body.onScroll = moveCamera;
-});
-
-function init() {
-  scene = new THREE.Scene()
-  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100)
-  camera.position.set(0, 0, 12)
-
-  light = new THREE.AmbientLight(0xffffff, 1)
-
-  scene.add(camera, light)
-
-  const canvas = document.querySelector("#bg")
-  renderer = new THREE.WebGLRenderer({canvas: canvas, alpha: true})
-  renderer.setPixelRatio(window.devicePixelRatio)
-  renderer.setSize(window.innerWidth, window.innerHeight)
-
-  generateStars(scene)
-}
-
-function animate() {
-  requestAnimationFrame(animate)
-
-  renderer.render(scene, camera)
-}
-
-function moveCamera() {
-  const t = document.getBoundingClientRect().top
-
-  camera.position.y = t * 0.017
-}
+  if (!userAuth.value) {
+    items.value = getMockRoadmap();
+  } else {
+    items.value = results
+  }
+})
 </script>
 
 <template>
   <main class="flex flex-col items-center justify-center mt-32 pb-32">
-    <canvas id="bg"/>
-    <section class="text-center mb-10">
+    <GeneratedStars />
+    <section class="text-center gap-5 flex flex-col mb-5">
       <h1 class="text-5xl lg:text-6xl text-latte-primary font-bold">Roadmap</h1>
       <p class="text-sm lg:text-lg">
         A roadmap of our milestones and accomplishments as partner
       </p>
     </section>
-    <section class="px-4">
+    <div v-if="!userAuth">
       <RoadmapCard
         v-for="(item, index) in items"
         :key="index"
-        :headings="item.header"
-        :description="item.body"
-        class="mt-5 lg:mt-10"
+        :img="item.img"
+        :title="item.title"
+        :description="item.description"
+        :done="item.done"
       />
-    </section>
+    </div>
+    <div v-else>
+      <RoadmapCard
+        v-for="(item, index) in items"
+        :key="index"
+        :img="item.images.image_url"
+        :title="item.title"
+        :description="item.description"
+        :done="item.done"
+        :date="item.date"
+      />
+    </div>
   </main>
 </template>
-
-<style scoped>
-canvas {
-  top: 0;
-  left: 0;
-  position: fixed;
-}
-</style>
