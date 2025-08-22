@@ -23,7 +23,7 @@ onMounted(async () => {
 <template>
   <main class="flex flex-col items-center justify-center mt-32 pb-32">
     <GeneratedStars />
-    <section class="text-center mb-10">
+    <section class="text-center gap-5 flex flex-col mb-5">
       <h1 class="text-5xl lg:text-6xl text-latte-primary font-bold">Roadmap</h1>
       <p class="text-sm lg:text-lg">
         A roadmap of our milestones and accomplishments as partner
@@ -36,7 +36,6 @@ onMounted(async () => {
         :img="item.img"
         :title="item.title"
         :description="item.description"
-        class="mt-5 lg:mt-10"
       />
     </div>
     <div v-else>
@@ -47,7 +46,6 @@ onMounted(async () => {
         :title="item.title"
         :description="item.description"
         :date="item.date"
-        class="mt-5 lg:mt-10"
       />
     </div>
   </main>
