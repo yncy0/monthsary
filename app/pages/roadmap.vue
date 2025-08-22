@@ -10,10 +10,12 @@ const { userAuth } = useAuthState();
 const items = ref<MockRoadmap | T>([]);
 
 onMounted(async () => {
-  if (!userAuth) {
+  const results = await useFetchRoadmap();
+
+  if (!userAuth.value) {
     items.value = getMockRoadmap();
   } else {
-    items.value = await useFetchRoadmap();
+    items.value = results
   }
 })
 </script>
@@ -27,15 +29,26 @@ onMounted(async () => {
         A roadmap of our milestones and accomplishments as partner
       </p>
     </section>
-    <section class="px-4">
+    <div v-if="!userAuth">
       <RoadmapCard
         v-for="(item, index) in items"
         :key="index"
+        :img="item.img"
         :title="item.title"
         :description="item.description"
         class="mt-5 lg:mt-10"
       />
-    </section>
+    </div>
+    <div v-else>
+      <RoadmapCard
+        v-for="(item, index) in items"
+        :key="index"
+        :img="item.images.image_url"
+        :title="item.title"
+        :description="item.description"
+        :date="item.date"
+        class="mt-5 lg:mt-10"
+      />
+    </div>
   </main>
 </template>
-
