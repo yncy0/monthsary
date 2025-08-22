@@ -36,6 +36,7 @@ onMounted(async () => {
         :img="item.img"
         :title="item.title"
         :description="item.description"
+        :done="item.done"
       />
     </div>
     <div v-else>
@@ -45,6 +46,7 @@ onMounted(async () => {
         :img="item.images.image_url"
         :title="item.title"
         :description="item.description"
+        :done="item.done"
         :date="item.date"
       />
     </div>
