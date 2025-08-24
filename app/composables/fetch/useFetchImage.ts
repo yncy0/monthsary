@@ -19,8 +19,8 @@ export async function useFetchImageWithDate(date: string) {
   const { data, error } = await client
     .from("images")
     .select("*")
-    .eq("date", date)
-    .order("id", { ascending: true });
+    .eq("date_id", date)
+    .order("date_id", { ascending: true });
 
   if (error) throw error;
 
