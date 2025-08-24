@@ -1,13 +1,13 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T">
 import dayjs from "dayjs";
 
 const { userAuth } = useAuthState();
-const imageUrls = ref([]);
-const dates = ref([]);
+const imageUrls = ref<T>([]);
+const dates = ref<T>([]);
 
 onMounted(async () => {
   const results = await useFetchImage();
-  const date_results = await useFetchDimDate();
+  const date_results = await useFetchDimDateFilter(["2025-02-14"]);
 
   if (!userAuth.value) {
     imageUrls.value = getMockImages();
@@ -19,20 +19,41 @@ onMounted(async () => {
 </script>
 
 <template>
-  <ul v-if="!userAuth" class="flex flex-row flex-wrap w-full object-cover gap-5 lg:gap-2 px-6 lg:px-24">
+  <ul 
+    v-if="!userAuth"
+    class="flex flex-row flex-wrap w-full object-cover gap-5 lg:gap-2 px-6 lg:px-24"
+  >
     <li v-for="(image, index) in imageUrls" :key="index">
-      <img v-if="!userAuth" :src="image" alt="It is an image" class="flex-1 w-full lg:w-64 h-96 rounded-md">
+      <img
+        v-if="!userAuth" 
+        :src="image"
+        alt="It is an image"
+        class="flex-1 w-full lg:w-64 h-96 rounded-md"
+      >
     </li>
   </ul>
   <!-- FIXME: Layout shuffling when adding gap or any space between <NuxtImg/> -->
-  <ul v-else class="flex flex-col w-full object-cover gap-5 lg:gap-24 px-6 lg:px-24">
-    <li v-for="(date, dateIndex) in dates" :key="dateIndex" class="flex flex-col gap-10">
+  <ul 
+    v-else 
+    class="flex flex-col w-full object-cover gap-5 lg:gap-24 px-6 lg:px-24"
+  >
+    <li 
+      v-for="(date, dateIndex) in dates"
+      :key="dateIndex"
+      class="flex flex-col gap-10"
+    >
       <h2 class="font-bold lg:text-4xl text-2xl">
         {{ dayjs(date.date).format("MMMM DD, YYYY") }}
       </h2>
       <ul class="flex justify-start flex-wrap px-6 lg:px-0">
-        <li v-for="(imageUrl, imageUrlIndex) in imageUrls" :key="imageUrlIndex">
-          <img v-if="imageUrl.date_id === date.id" :src="imageUrl.image_url" alt="It is an image"
+        <li 
+          v-for="(imageUrl, imageUrlIndex) in imageUrls"
+          :key="imageUrlIndex"
+        >
+          <img
+            v-if="imageUrl.date_id === date.date" 
+            :src="imageUrl.image_url"
+            alt="It is an image"
             class="w-full lg:w-64 h-96 rounded-md">
         </li>
       </ul>
