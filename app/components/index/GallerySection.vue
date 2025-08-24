@@ -19,7 +19,7 @@ onMounted(async () => {
 
 <template>
   <section id="gallery" class="flex flex-col w-full h-dvh items-center gap-10 pb-20 pt-10">
-    <HeadingGlow :level="2" text="Memories..." class="text-4xl lg:text-7xl" />
+    <HeadingGlow :level="2" text="Memories..." class="text-3xl lg:text-5xl" />
     <div class="px-4">
       <p class="text-sm lg:text-lg">
         Here lies our precious memories that we did together, from the beginning

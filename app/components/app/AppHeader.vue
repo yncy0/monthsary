@@ -62,7 +62,7 @@ function onClose() {
 
 <!--It uses NavigationMenu from NuxtUI, for more infor visit: https://ui3.nuxt.dev/components/navigation-menu-->
 <template>
-  <header class="fixed top-0 left-0 w-full z-30 bg-mocha-crust">
+  <header class="fixed top-0 left-0 w-full z-[100] bg-mocha-crust">
     <div class="flex flex-row items-center p-2 gap-4 justify-between lg:justify-around">
       <!-- Icon -->
       <img src="/favicon-16x16.png" width="32" height="32" >

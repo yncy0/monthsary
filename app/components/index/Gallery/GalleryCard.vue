@@ -12,7 +12,7 @@ const props = defineProps<{
       <div class="flex flex-col gap-4">
         <img :src="props.imgSrc" class="rounded-lg h-[320px] lg:size-[320px] object-cover">
 
-        <h3 class="text-2xl font-bold">
+        <h3 class="text-sm font-bold">
           {{ props.header }}
         </h3>
       </div>

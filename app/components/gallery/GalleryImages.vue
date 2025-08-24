@@ -42,7 +42,7 @@ onMounted(async () => {
       :key="dateIndex"
       class="flex flex-col gap-10"
     >
-      <h2 class="font-bold lg:text-4xl text-2xl">
+      <h2 class="font-bold lg:text-3xl text-xl">
         {{ dayjs(date.date).format("MMMM DD, YYYY") }}
       </h2>
       <ul class="flex justify-start flex-wrap px-6 lg:px-0">

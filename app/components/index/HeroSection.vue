@@ -15,7 +15,7 @@ const monthsary = monthlyIncrement(year, month, day)
   >
     <section class="flex flex-col gap-2 z-10">
       <h1
-        class="text-5xl md:text-7xl lg:text-8xl text-transparent heading-gradient bg-clip-text font-bold text-center"
+        class="text-4xl md:text-5xl lg:text-6xl text-transparent heading-gradient bg-clip-text font-bold text-center"
       >
         Happy {{monthsary}}th
         <span class="text-transparent bg-clip-text"> Monthsary </span>
