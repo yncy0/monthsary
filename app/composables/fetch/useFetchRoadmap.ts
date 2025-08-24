@@ -36,6 +36,7 @@ export async function useFetchRoadmapRange(range: string) {
     .from("roadmap")
     .select(`*, images (id, image_url, unique_id)`)
     .lte("index", range)
+    .neq("index", "2")
     .order("index", { ascending: true });
 
   if (error) throw error;
