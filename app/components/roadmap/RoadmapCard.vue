@@ -11,7 +11,7 @@ const props = defineProps<MockRoadmap>();
   >
     <!-- Header -->
     <template #header>
-      <h2 class="text-3xl font-bold drop-shadow-latte-primary p-4 lg:p-7">
+      <h2 class="text-2xl lg:text-3xl font-bold drop-shadow-latte-primary p-4 lg:p-7">
         {{ props.title }}
       </h2>
     </template>
