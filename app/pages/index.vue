@@ -1,16 +1,14 @@
 <script setup>
 definePageMeta({
-  colorMode: "dark"
-})
+  colorMode: "dark",
+});
 </script>
 
 <template>
-  <main>
-    <NyaNyaGang />
-    <HeroSection />
+  <NyaNyaGang />
+  <HeroSection />
 
-    <GallerySection />
+  <GallerySection />
 
-    <RoadmapSection />
-  </main>
+  <RoadmapSection />
 </template>

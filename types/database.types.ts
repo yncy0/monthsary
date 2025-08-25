@@ -90,7 +90,7 @@ export type Database = {
             columns: ["date_id"]
             isOneToOne: false
             referencedRelation: "dim_date"
-            referencedColumns: ["id"]
+            referencedColumns: ["date"]
           },
         ]
       }
@@ -134,7 +134,7 @@ export type Database = {
           done: boolean | null
           id: string
           image_id: string | null
-          index: number | null
+          index: number
           title: string | null
         }
         Insert: {
@@ -144,7 +144,7 @@ export type Database = {
           done?: boolean | null
           id?: string
           image_id?: string | null
-          index?: number | null
+          index?: number
           title?: string | null
         }
         Update: {
@@ -154,7 +154,7 @@ export type Database = {
           done?: boolean | null
           id?: string
           image_id?: string | null
-          index?: number | null
+          index?: number
           title?: string | null
         }
         Relationships: [
@@ -164,6 +164,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "images"
             referencedColumns: ["unique_id"]
+          },
+          {
+            foreignKeyName: "roadmap_date_fkey"
+            columns: ["date"]
+            isOneToOne: false
+            referencedRelation: "dim_date"
+            referencedColumns: ["date"]
           },
         ]
       }

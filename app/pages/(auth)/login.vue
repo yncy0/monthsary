@@ -49,7 +49,7 @@ async function signInWithOtp(event: FormSubmitEvent<LoginSchema>) {
       @submit.prevent="signInWithOtp"
     >
       <div class="flex flex-col gap-2">
-        <h1 class="text-2xl font-bold">Hello There!</h1>
+        <h1 class="text-2xl font-bold text-latte-primary drop-shadow-latte-primary">Hello There!</h1>
         <p>Welcome back my pookie!</p>
       </div>
       <UFormField label="Email Account" name="email" class="w-full">

@@ -5,7 +5,7 @@ const { userAuth } = useAuthState();
 const items = ref<MockRoadmap | T>([]);
 
 onMounted(async () => {
-  const results = await useFetchRoadmapRange("3");
+  const results = await useFetchRoadmapRange("4");
 
   if (!userAuth.value) {
     items.value = getMockRoadmap();
@@ -17,7 +17,7 @@ onMounted(async () => {
 
 <template>
   <section id="roadmap" class="flex flex-col items-center justify-center py-10 min-w-full">
-    <HeadingGlow :level="2" text="Roadmap" class="text-4xl lg:text-7xl" />
+    <h2 class="drop-shadow-latte-primary text-3xl lg:text-5xl">Roadmap</h2>
     <p class="text-sm lg:text-lg">Lists of accomplished goals</p>
     <section 
       v-for="(item, index) in items"
