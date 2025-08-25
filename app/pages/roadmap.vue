@@ -23,7 +23,7 @@ onMounted(async () => {
 <template>
   <main class="flex flex-col items-center justify-center mt-32 pb-32">
     <GeneratedStars />
-    <section class="text-center gap-5 flex flex-col mb-5">
+    <section class="text-center gap-5 flex flex-col mb-14">
       <h1 class="text-5xl lg:text-6xl text-latte-primary font-bold drop-shadow-latte-primary">Roadmap</h1>
       <p class="text-sm lg:text-lg">
         A roadmap of our milestones and accomplishments as partner

@@ -1,19 +1,27 @@
 <script setup lang="ts" generic="T">
-import type { MockRoadmap } from '#imports';
+import type { MockRoadmap } from "#imports";
 
 const props = defineProps<MockRoadmap>();
 </script>
 
 <template>
-  <div class="flex flex-row justify-between">
-    <ImageCard :img="props.img" :date="props.date" />
-    <UIcon v-if="props.done" name="i-lucide-paw-print" class="size-[150px] z-10 text-latte-peach left-10 top-24 relative -rotate-z-12"/>
-  </div>
-  <div
-    class="relative max-w-screen w-full lg:w-[1000px] bg-mocha-base flex flex-col items-center text-center p-20 bottom-56">
-    <div class="flex flex-col gap-5 px-32">
-      <h2 class="text-3xl font-bold drop-shadow-latte-primary">{{ props.title }}</h2>
+
+  <UCard
+    class="max-w-screen w-full lg:w-[1000px] bg-mocha-base flex flex-col items-center justify-center text-center mb-14"
+  >
+    <!-- Header -->
+    <template #header>
+      <h2 class="text-3xl font-bold drop-shadow-latte-primary p-4 lg:p-7">
+        {{ props.title }}
+      </h2>
+    </template>
+
+    <!-- Body -->
+    <ImageCard :img="props.img" :date="props.date" :done="props.done"/>
+
+    <!-- Footer -->
+    <template #footer>
       <p class="text-sm lg:text-lg">{{ props.description }}</p>
-    </div>
-  </div>
+    </template>
+  </UCard>
 </template>
