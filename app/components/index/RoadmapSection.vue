@@ -1,8 +1,8 @@
-<script setup lang="ts" generic="T">
-import type { MockRoadmap } from "#imports"
+<script setup lang="ts">
+import type { Roadmap, MockRoadmap } from "#imports"
 const { userAuth } = useAuthState();
 
-const items = ref<MockRoadmap | T>([]);
+const items = ref<Roadmap[] | MockRoadmap[]>([]);
 
 onMounted(async () => {
   const results = await useFetchRoadmapRange("4");
