@@ -1,8 +1,6 @@
 # 💖 Monthsary Website 
 It is just a dedication [website](https://monthsary-web.nuxt.dev/) for the love of my life.
 
-*Due to current breakup, the project is postpone.*
-
 ## Warning
 *If you want a copy of this project and modify it as you template, kindly fork this repository.*
 
