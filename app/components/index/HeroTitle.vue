@@ -5,7 +5,7 @@ const year: string = "2024";
 const month: string = "11";
 const day: string = "30";
 
-const monthsary = monthlyIncrement(year, month, day);
+const monthsary = ref<string>(monthlyIncrement(year, month, day));
 </script>
 
 <template>
