@@ -1,9 +1,11 @@
-<script setup lang="ts" generic="T">
+<script setup lang="ts">
 import dayjs from "dayjs";
 
+import type { DimDate, Images } from "@/types/database.types"
+
 const { userAuth } = useAuthState();
-const imageUrls = ref<T>([]);
-const dates = ref<T>([]);
+const imageUrls = ref<Images[] | string[]>([]);
+const dates = ref<DimDate[] | null>([]);
 
 onMounted(async () => {
   const results = await useFetchImage();
