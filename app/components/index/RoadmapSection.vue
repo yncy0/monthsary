@@ -1,18 +1,20 @@
-<script setup lang="ts" generic="T">
-import type { MockRoadmap } from "#imports"
-const { userAuth } = useAuthState();
+<script setup lang="ts">
+import type { Roadmap, MockRoadmap } from "#imports"
 
-const items = ref<MockRoadmap | T>([]);
+const fetchedItems = ref<Roadmap[]>([]);
+const mockItems = ref<MockRoadmap[]>([])
+
+const { userAuth } = useAuthState();
+const { data: roadmap } = await useFetchRoadmapRange("4");
 
 onMounted(async () => {
-  const results = await useFetchRoadmapRange("4");
-
-  if (!userAuth.value) {
-    items.value = getMockRoadmap();
-  } else {
-    items.value = results;
-  }
+  mockItems.value = getMockRoadmap()
+  fetchedItems.value = roadmap.value
 });
+
+const items = computed(() => {
+  return !userAuth.value ? mockItems.value : fetchedItems.value;
+})
 </script>
 
 <template>

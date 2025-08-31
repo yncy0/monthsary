@@ -1,14 +1,14 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T">
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 
-import type { CarouselItem } from "@nuxt/ui"
+import type { IndexMemories, MockGallery } from "@/utils/types"
 
 const { userAuth } = useAuthState()
 
 const props = defineProps<{
-  items: CarouselItem[];
+  items: Array<IndexMemories | MockGallery>
 }>();
 
 dayjs.extend(utc);
@@ -25,13 +25,13 @@ dayjs.extend(timezone);
     :items="props.items"
     :ui="{ item: 'basis-full sm:basis-1/2 md:basis-1/3' }"
   >
-    <GalleryCard
+    <MemoriesCard
       v-if="userAuth"
       :img-src="item.images.image_url"
       :description="item.description"
       :header="dayjs(item.date).tz('Asia/Manila').format('MMMM DD, YYYY')"
     />
-    <GalleryCard
+    <MemoriesCard
       v-else
       :img-src="item.image_url"
       :description="item.description"

@@ -8,7 +8,7 @@ definePageMeta({
   <NyaNyaGang />
   <HeroSection />
 
-  <GallerySection />
+  <MemoriesSection />
 
   <RoadmapSection />
 </template>

@@ -1,9 +1,7 @@
 <script setup lang="ts">
-const props = defineProps<{
-  imgSrc: string;
-  header: string;
-  description: string;
-}>();
+import type { GalleryCard } from "@/utils/types"
+
+const props = defineProps<GalleryCard>();
 </script>
 
 <template>

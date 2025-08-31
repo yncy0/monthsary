@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T">
-import type { MockRoadmap } from "#imports"
+import type { Roadmap, MockRoadmap } from "#imports"
 
 definePageMeta({
   colorMode: "dark"
@@ -7,27 +7,28 @@ definePageMeta({
 
 const { userAuth } = useAuthState();
 
-const items = ref<MockRoadmap | T>([]);
+const items = ref<Roadmap[] | MockRoadmap[]>([]);
+const { data: roadmap } = await useFetchRoadmap()
 
 onMounted(async () => {
-  const results = await useFetchRoadmap();
-
   if (!userAuth.value) {
     items.value = getMockRoadmap();
   } else {
-    items.value = results
+    items.value = roadmap.value
   }
 })
 </script>
 
 <template>
   <GeneratedStars />
+
   <section class="text-center gap-5 flex flex-col mb-14 px-5 mt-32">
     <h1 class="text-4xl lg:text-6xl text-latte-primary font-bold drop-shadow-latte-primary">Roadmap</h1>
     <p class="text-sm lg:text-lg">
       A roadmap of our milestones and accomplishments as partner
     </p>
   </section>
+
   <div v-if="!userAuth">
     <RoadmapCard
       v-for="(item, index) in items"
