@@ -1,11 +1,7 @@
-type MockData = {
-  image_url: string;
-  description: string;
-  date: string;
-};
+import type { MockGallery } from "../types";
 
 export function getMockGallery() {
-  const data: MockData[] = [
+  const data: MockGallery[] = [
     {
       image_url: "/images/cat-thunder.png",
       description:

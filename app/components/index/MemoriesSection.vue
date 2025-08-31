@@ -1,20 +1,21 @@
 <script setup lang="ts">
+import type { IndexMemories, MockGallery } from "@/utils/types";
+
 const { userAuth } = useAuthState();
 
-const items = ref([]);
-const isUser = ref(false);
+const mockItems = ref<MockGallery[]>([]);
+const fetchedItems = ref<IndexMemories[]>([]);
+
+const { data: memories } = await useFetchMemories();
 
 onMounted(async () => {
-  const results = await useFetchMemories();
-
-  if (!userAuth.value) {
-    items.value = getMockGallery();
-    isUser.value = false;
-  } else {
-    items.value = results;
-    isUser.value = true;
-  }
+  mockItems.value = getMockGallery();
+  fetchedItems.value = memories.value
 });
+
+const items = computed(() => {
+  return !userAuth.value ? mockItems.value : fetchedItems.value;
+})
 </script>
 
 <template>
@@ -35,7 +36,7 @@ onMounted(async () => {
       </p>
     </div>
     <div class="w-full max-w-screen lg:w-[1000px] px-4">
-      <GalleryCarousel :items="items" />
+      <MemoriesCarousel :items="items" />
     </div>
   </section>
 </template>

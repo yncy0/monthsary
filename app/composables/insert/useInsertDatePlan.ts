@@ -1,23 +1,12 @@
-import type { Database } from "~/types/database.types.ts";
-
 export async function useInsertDatePlan(
   moodSpectrum: string,
   place: string,
   foodEstablishment: string,
   meetingTime: string,
 ) {
-  const client = useSupabaseClient<Database>();
-  const { data, error } = await client
-    .from("date_plan")
-    .insert({
-      mood_spectrum: moodSpectrum,
-      place: place,
-      food_establishment: foodEstablishment,
-      meeting_time: meetingTime,
-    })
-    .select();
+  const { datePlan } = await $fetch(
+    `/api/date_plan?moodSpectrum=${moodSpectrum}&place=${place}&foodEstablishment=${foodEstablishment}&meetingTimes=${meetingTime}`,
+  );
 
-  if (error) throw error;
-
-  return { data };
+  return datePlan
 }
