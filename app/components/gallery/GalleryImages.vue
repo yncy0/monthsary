@@ -3,19 +3,19 @@ import dayjs from "dayjs";
 
 import type { DimDate, Images } from "@/types/database.types"
 
-const { userAuth } = useAuthState();
 const imageUrls = ref<Images[] | string[]>([]);
 const dates = ref<DimDate[] | null>([]);
 
-onMounted(async () => {
-  const results = await useFetchImage();
-  const date_results = await useFetchDimDateFilter(["2025-02-14"]);
+const { userAuth } = useAuthState();
+const { data: images } = await useFetchImage()
+const { data: dimDate } = await useFetchDimDateFilter(["2025-02-14"]);
 
+onMounted(async () => {
   if (!userAuth.value) {
     imageUrls.value = getMockImages();
   } else {
-    dates.value = date_results;
-    imageUrls.value = results;
+    dates.value = dimDate.value;
+    imageUrls.value = images.value;
   }
 });
 </script>

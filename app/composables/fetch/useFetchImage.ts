@@ -1,5 +1,3 @@
-export async function useFetchImage() {
-  const { images } = await $fetch("/api/images");
-
-  return images;
+export function useFetchImage() {
+  return useFetch("/api/images");
 }

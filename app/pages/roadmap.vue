@@ -8,14 +8,13 @@ definePageMeta({
 const { userAuth } = useAuthState();
 
 const items = ref<Roadmap[] | MockRoadmap[]>([]);
+const { data: roadmap } = await useFetchRoadmap()
 
 onMounted(async () => {
-  const results = await useFetchRoadmap();
-
   if (!userAuth.value) {
     items.value = getMockRoadmap();
   } else {
-    items.value = results
+    items.value = roadmap.value
   }
 })
 </script>

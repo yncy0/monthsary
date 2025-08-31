@@ -15,5 +15,5 @@ export default defineEventHandler(async (event) => {
 
   if (error) throw error;
 
-  return {dimDate: data};
+  return data;
 });

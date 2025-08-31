@@ -11,5 +11,5 @@ export default defineEventHandler(async (event) => {
 
   if (error) throw error;
 
-  return { memories: data };
+  return data;
 });

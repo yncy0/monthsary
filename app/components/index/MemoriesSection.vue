@@ -6,9 +6,11 @@ const { userAuth } = useAuthState();
 const mockItems = ref<MockGallery[]>([]);
 const fetchedItems = ref<IndexMemories[]>([]);
 
+const { data: memories } = await useFetchMemories();
+
 onMounted(async () => {
   mockItems.value = getMockGallery();
-  fetchedItems.value = await useFetchMemories();
+  fetchedItems.value = memories.value
 });
 
 const items = computed(() => {
