@@ -25,9 +25,23 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      title: "Monthsary Website",
+      htmlAttrs: {
+        lang: "en",
+      },
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "icon", type: "image/png", href: "/favicon-16x16.png" },
+      ],
+      meta: [
+        {
+          name: "description",
+          content: "a monthsary website for my girlfriend.",
+        },
+        {
+          name: "author",
+          content: "Yncy0",
+        },
       ],
     },
   },

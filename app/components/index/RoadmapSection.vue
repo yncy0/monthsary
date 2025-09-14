@@ -24,7 +24,7 @@ const items = computed(() => {
     <section 
       v-for="(item, index) in items"
       :key="index"
-      class="px-6 pt-10 lg:px-20 lg:pt-20 mb-10 w-full max-w-screen flex flex-col"
+      class="px-6 pt-10 lg:px-10 lg:pt-20 mb-10 w-full max-w-screen flex flex-col"
     >
       <RoadmapStack
         v-if="!userAuth"
